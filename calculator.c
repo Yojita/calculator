@@ -3,10 +3,86 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 
-float previousOutput = 0, result = 0;
+// Function declarations
 
-/* Use menu() function to select choice */
+int menu();
+float input();
+void add();
+void subtract();
+void multiply();
+void divide();
+void square();
+void sqrt1();
+void Clear();
+char str1();
+char str2();
+char str3();
+
+float previous_result = false, result = 0;
+
+// Main function
+
+void main()
+{
+    while (1)
+    {
+        printf("**************************\n");
+        printf("**************************\n");
+        printf("Previous result is : %.2f\n", result);
+
+        /* switch statement to call an operation */
+
+        switch (menu())
+        {
+        case 1:
+            add(); // It calls the add() function to add the given numbers
+            previous_result = true;
+            break; // Break the function
+
+        case 2:
+            subtract(); // It calls the Subtract() function to add the given numbers
+            previous_result = true;
+            break; // Break the function
+
+        case 3:
+            multiply(); // It calls the Multiply() function to add the given numbers
+            previous_result = true;
+            break; // Break the function
+
+        case 4:
+            divide(); // It calls the Divide() function to add the given numbers
+            previous_result = true;
+            break; // Break the function
+
+        case 5:
+            square(); // It calls the Square() function to add the given numbers
+            previous_result = true;
+            break; // Break the function
+
+        case 6:
+            sqrt1(); // It calls the sqrt1() function to add the given numbers
+            previous_result = true;
+            break; // Break the function
+
+        case 7:
+            Clear(); // It calls the Clear() function to add the given numbers
+            break;   // Break the function
+
+        case 8:
+            exit(0); // It calls the exit() function to add the given numbers
+            break;   // Break the function
+
+        default:
+            printf("Invalid choice\n");
+            break; // Break the function
+        }
+    }
+}
+
+/* menu() function to select choice */
 
 int menu()
 {
@@ -24,8 +100,7 @@ int menu()
     return (choice);
 }
 
-
-/* Use input() function to take input from user */
+/* input() function to take input from user */
 
 float input()
 {
@@ -34,20 +109,48 @@ float input()
     return (num);
 }
 
+/* str1() function to accept first value from the user */
 
-/* Use Add() function to add the numbers */
-
-void Add()
+char str1()
 {
-    int i;                     // Declare a local variable
-    float no_of_inputs, num;   // Declare a local variable
+    char str;
+    char str1[30];
+    printf("Enter the first number :  \n");
+    return (str);
+}
 
-    if(previousOutput)
+/* str1() function to accept first value from the user */
+
+char str2()
+{
+    char str;
+    char str2[30];
+    printf("Enter the second number :  \n");
+    return (str);
+}
+/* str1() function to accept first value from the user */
+
+char str3()
+{
+    char str;
+    char str3[30];
+    printf("Enter the numbers : \n");
+    return (str);
+}
+
+/* add() function to add the numbers by accepting input by the user */
+
+void add()
+{
+    int i;
+    float no_of_inputs, num;
+    char str;
+    if (previous_result)
     {
         printf("How many numbers you want to add : \n");
         no_of_inputs = input();
-        printf("Enter the numbers : \n");
-        for(i = 1; i <= no_of_inputs; i++)
+        str = str3();
+        for (i = 1; i <= no_of_inputs; i++)
         {
             num = input();
             result += num;
@@ -58,8 +161,8 @@ void Add()
     {
         printf("How many numbers you want to add : \n");
         no_of_inputs = input();
-        printf("Enter the numbers : \n");
-        for(i = 1; i <= no_of_inputs; i++)
+        str = str3();
+        for (i = 1; i <= no_of_inputs; i++)
         {
             num = input();
             result += num;
@@ -68,191 +171,136 @@ void Add()
     }
 }
 
+/* subtract() function to subtract numbers by accepting input from the user */
 
-    /* Use Subtract() function to subtract numbers */
-
-    void Subtract()
+void subtract()
+{
+    float num1, num2;
+    char str;
+    if (previous_result)
     {
-        float num1, num2;
-        if(previousOutput)
-        {
-            printf("Enter the number : ");
-            num2 = input();
-            result -= num2;
-            printf("The subtraction is : %.2f\n", result);
-        }
-        else
-        {
-            printf("Enter first number : ");
-            num1 = input();
-            printf("Enter second number : ");
-            num2 = input();
-            result = num1 - num2;
-            printf("The subtraction is : %.2f\n", result);
-        }
+        str = str2();
+        num2 = input();
+        result -= num2;
+        printf("The subtraction is : %.2f\n", result);
     }
-
-
-    /* Use Multiply() function to multiply numbers */
-
-    void Multiply()
+    else
     {
-        float num1, num2;
-        if(previousOutput)
-        {
-            printf("Enter the number : ");
-            num2 = input();
-            result *= num2;
-            printf("The multiplication is : %.2f\n", result);
-        }
-        else
-        {
-            printf("Enter first number : ");
-            num1 = input();
-            printf("Enter second number : ");
-            num2 = input();
-            result = num1 * num2;
-            printf("The multiplication is : %.2f\n", result);
-        }
+        str = str1();
+        num1 = input();
+        str = str2();
+        num2 = input();
+        result = num1 - num2;
+        printf("The subtraction is : %.2f\n", result);
     }
+}
 
+/* multiply() function to multiply numbers by accepting input from the user */
 
-    /* Use divide() function to divide numbers */
-
-    void Divide()
+void multiply()
+{
+    float no_of_inputs, num, temp1, temp2;
+    int i;
+    char str;
+    if (previous_result)
     {
-        float num1, num2;
-        if(previousOutput)
+        printf("How many numbers you want to multiply : \n");
+        no_of_inputs = input();
+        str = str3();
+        for (i = 1; i <= no_of_inputs; i++)
         {
-            printf("Enter the number : ");
-            num2 = input();
-            result /= num2;
-            printf("The division is : %.2f\n", result);
+            num = input();
+            temp1 = 1 * num;
+            temp2 = result;
+            result = temp1 * temp2;
         }
-        else
-        {
-            printf("Enter first number : ");
-            num1 = input();
-            printf("Enter second number : ");
-            num2 = input();
-            result = num1 / num2;
-            printf("The division is : %.2f\n", result);
-        }
+        printf("The multiplication is : %.2f\n", result);
     }
-
-
-    /* Use Square() function to get square of given number */
-
-    void square()
+    else
     {
-        float num1;        // local variable declaration
-        if(previousOutput)
+        printf("How many numbers you want to multiply : \n");
+        no_of_inputs = input();
+        str = str3();
+        for (i = 1; i <= no_of_inputs; i++)
         {
-            result *= result;
-            printf("The square of given number is : %.2f\n", result);
+            num = input();
+            temp1 = 1 * num;
+            temp2 = result;
+            result = temp1 + temp2;
         }
-        else
-        {
-            printf("Enter the number : ");
-            num1 = input();
-            result = num1 * num1;
-            printf("The square of given number is : %.2f\n", result);
-        }
+        printf("The multiplication is : %.2f\n", result);
     }
+}
 
+/* divide() function to divide the numbers by accepting input from the user */
 
-    /* Use sqrt() function to get the square root of given function */
-
-    void Sqrt()
+void divide()
+{
+    float num1, num2;
+    char str;
+    if (previous_result)
     {
-        float num1;        // local variable declaration 
-        if(previousOutput)
-        {
-            result = sqrt(result);
-            printf("The square root of given number is : %.2f\n", result);
-        }
-        else
-        {
-            printf("Enter the number : ");
-            num1 = input();
-            result = sqrt(num1);
-            printf("The square root of given number is : %.2f\n", result);
-        }
+        str = str2();
+        num2 = input();
+        result /= num2;
+        printf("The division is : %.2f\n", result);
     }
-
-
-    /* Use Clear() function to clear the screen */
-
-    void Clear()
+    else
     {
-        printf("Previous data cleared\n");
-        result = 0;
-        previousOutput = 0;
+        str = str1();
+        num1 = input();
+        str = str2();
+        num2 = input();
+        result = num1 / num2;
+        printf("The division is : %.2f\n", result);
     }
-    
-// Main function
+}
 
-    void main()
-    {   
-        while(1)
-        {
-            printf("**************************\n");
-            printf("**************************\n");
-            printf("Previous result is : %.2f\n", result);
+/* square() function to square the numbers by accepting input from the user */
 
-
-    /* Use switch statement to call an operation */
-
-        switch (menu())
-        {
-            case 1:
-            Add();                // It call the add() function to add the given numbers 
-            previousOutput = 1;
-            break;                // Break the function
-
-            case 2:
-            Subtract();           // It call the Subtract() function to add the given numbers 
-            previousOutput = 1;
-            break;                // Break the function
-
-
-            case 3:
-            Multiply();           // It call the Multiply() function to add the given numbers 
-            previousOutput = 1;
-            break;                // Break the function
-
-
-            case 4:
-            Divide();             // It call the Divide() function to add the given numbers 
-            previousOutput = 1;
-            break;                // Break the function
-
-
-            case 5:
-            square();             // It call the Square() function to add the given numbers 
-            previousOutput = 1;
-            break;                // Break the function
-
-
-            case 6:
-            Sqrt();         // It call the squareRoot() function to add the given numbers 
-            previousOutput = 1;
-            break;                // Break the function
-
-
-            case 7:
-            Clear();              // It call the Clear() function to add the given numbers 
-            break;                // Break the function
-
-
-            case 8:
-            exit(0);               // It call the exit() function to add the given numbers 
-            break;                // Break the function
-
-
-            default:
-            printf("Invalid choice\n");
-            break;                // Break the function
-        }
-        }
+void square()
+{
+    float num1;
+    char str;
+    if (previous_result)
+    {
+        result *= result;
+        printf("The square of given number is : %.2f\n", result);
     }
+    else
+    {
+        str = str1();
+        num1 = input();
+        result = num1 * num1;
+        printf("The square of given number is : %.2f\n", result);
+    }
+}
+
+/* sqrt1() function to calculate square root by accepting input from user*/
+
+void sqrt1()
+{
+    float num1;
+    char str;
+    if (previous_result)
+    {
+        result = sqrt(result);
+        printf("The square root of given number is : %.2f\n", result);
+    }
+    else
+    {
+        str = str1();
+        num1 = input();
+        result = sqrt(num1);
+        printf("The square root of given number is : %.2f\n", result);
+    }
+}
+
+/* Clear() function to Clear the screen */
+
+void Clear()
+{
+    printf("Previous data cleared\n");
+    result = 0;
+    previous_result = 0;
+}
